@@ -10,6 +10,9 @@ app.get("/:id", (req,res)=>{
 (async () => {
     const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
+
+    await page.setDefaultNavigationTimeout(0);
+    
     await page.goto('https://www.portaljob-madagascar.com/emploi/liste/page/'+id);
     const emploie = await page.evaluate(()=>{
         let emploie = [];
