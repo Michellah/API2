@@ -1,7 +1,7 @@
 const { json } = require("express");
 const express = require("express");
 const puppeteer = require('puppeteer');
-const app = express();
+const app = express()
 
 app.use(json());
 
@@ -30,7 +30,7 @@ app.get("/:id", (req,res)=>{
         return emploie;  
     });
     await browser.close();
-    res.send(JSON.stringify(emploie))
+    res.json(emploie)
 })();
 
 })
