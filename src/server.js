@@ -1,9 +1,11 @@
 const { json } = require("express");
 const express = require("express");
+const cors = require("cors")
 const puppeteer = require('puppeteer');
 const app = express()
 
 app.use(json());
+app.use(cors())
 
 app.get("/:id", (req,res)=>{
     const id = parseInt(req.params.id);
