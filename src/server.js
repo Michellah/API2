@@ -1,11 +1,9 @@
 const { json } = require("express");
 const express = require("express");
-const cors = require("cors")
 const puppeteer = require('puppeteer');
 const app = express()
 
 app.use(json());
-app.use(cors())
 
 app.get("/:id", (req,res)=>{
     const id = parseInt(req.params.id);
@@ -28,9 +26,10 @@ app.get("/:id", (req,res)=>{
                 contrat: element.querySelector('body > section.col2_max_min > div > div.max > article > aside.contenu_annonce > h5')?.textContent,
                 urgence: element.querySelector('body > section.col2_max_min > div > div.max > article > aside.date_annonce > div.urgent_flag')?.textContent
             })
-        }  
-        res.json(emploie)
+        }
+        return emploie;  
     });
+    res.json(emploie)
     await browser.close();
 })();
 
