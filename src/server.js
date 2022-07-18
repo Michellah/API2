@@ -28,11 +28,10 @@ app.get("/:id", (req,res)=>{
                 contrat: element.querySelector('body > section.col2_max_min > div > div.max > article > aside.contenu_annonce > h5')?.textContent,
                 urgence: element.querySelector('body > section.col2_max_min > div > div.max > article > aside.date_annonce > div.urgent_flag')?.textContent
             })
-        }
-        return emploie;  
+        }  
+        res.json(emploie)
     });
     await browser.close();
-    res.json(emploie)
 })();
 
 })
